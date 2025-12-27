@@ -17,7 +17,8 @@ const SignIn = () => {
   }
 
   if(data?.session && data?.user){
-    router.push("/")
+    router.push("/");
+    return null;
   }
   return (
     <>

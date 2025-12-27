@@ -32,6 +32,7 @@ const DeviceApprovalPage = () => {
 
     if(!data?.session && !data?.user){
         router.push("/sign-in");
+        return null;
     }
 
     const handleApprove = async () => {

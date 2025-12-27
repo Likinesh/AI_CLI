@@ -287,7 +287,7 @@ async function pollToken(authClient, device_code, clientId, interval) {
                             process.exit(1);
                     }
                 }
-            } catch (error) {
+            } catch (err) {
                 spinner.stop();
                 logger.error(`Network error: ${err.message}`);
                 process.exit(1);
@@ -352,6 +352,11 @@ export async function whoamiAction(opts) {
       image: true,
     },
   });
+
+  if (!user) {
+    console.log(chalk.red("User not found. Token may be invalid."));
+    process.exit(1);
+  }
 
   // Output user session info
   console.log(

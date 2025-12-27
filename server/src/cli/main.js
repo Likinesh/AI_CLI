@@ -39,6 +39,6 @@ async function main() {
 }
 
 main().catch((err) => {
-    console.log(chalk.red("Error runnning Orbital CLI:"),err)
+    console.log(chalk.red("Error running Orbital CLI:"),err)
     process.exit(1);
 });
