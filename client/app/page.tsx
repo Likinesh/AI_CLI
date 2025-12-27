@@ -3,12 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { authClient } from "@/lib/auth-client";
 import { router } from "better-auth/api";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
   const {data, isPending} = authClient.useSession();
   const router = useRouter();
+  
+  if(!data?.session && !data?.user){
+    router.push("/sign-in")
+  }
 
   if(isPending){
     return(
@@ -18,9 +21,6 @@ export default function Home() {
     )
   }
 
-  if(!data?.session && !data?.user){
-    router.push("/sign-in")
-  }
   return (
     <div className="flex font-sans bg-background items-center justify-center min-h-screen">
       <div className="w-full max-w-md px-4">
@@ -68,6 +68,12 @@ export default function Home() {
             className="w-full h-11 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors">
               Sign Out
             </Button>
+
+            <div className="flex items-center gap-3">
+              <div className="flex-1 h-px border-t border-dashed border-zinc-700"></div>
+              <span className="text-xs text-zinc-600">Session Acitve</span>
+              <div className="flex-1 h-px border-t border-dashed border-zinc-700"></div>
+            </div>
         </div>
       </div>
     </div>
