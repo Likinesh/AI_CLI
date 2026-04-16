@@ -10,6 +10,13 @@ import { wakeup } from './commands/ai/wakeUp.js';
 
 dotenv.config();
 
+/**
+ * Initialize and run the Orbital CLI: show the startup banner, register subcommands, and dispatch user input.
+ *
+ * Displays the ASCII banner and short description, configures the Commander program with version and description,
+ * registers the `login`, `logout`, `whoami`, and `wakeup` subcommands, sets the default action to show help,
+ * and parses command-line arguments to execute the requested command.
+ */
 async function main() {
     // Display banner
     console.log(
