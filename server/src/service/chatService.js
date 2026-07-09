@@ -30,6 +30,7 @@ export class ChatService {
             if(conversation){
                 return conversation
             }
+            throw new Error("Conversation not found or unauthorized");
         }
 
         return await this.createConversation(userId,mode)

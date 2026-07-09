@@ -13,7 +13,7 @@ import * as z from 'zod/v4'
 import 'dotenv/config'
 import prisma from "../../../lib/db.js";
 
-const URL = "http://localhost:3005";
+const URL = process.env.SERVER_URL || `http://localhost:${process.env.PORT || 3005}`;
 const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const CONFIG_DIR = path.join(os.homedir(),".orbital-cli");
 const TOKEN_FILE = path.join(CONFIG_DIR,"token.json");
